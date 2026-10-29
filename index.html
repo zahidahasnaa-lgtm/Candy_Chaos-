@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Candy Chaos 🍬</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ffc1df, #c9b8ff, #a8eaff);
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  color: #74417d;
+}
+
+.game {
+  width: 100%;
+  max-width: 440px;
+  background: #fff7fc;
+  padding: 12px;
+  border: 4px solid white;
+  border-radius: 26px;
+  box-shadow: 0 12px 35px #73458c33;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin: 0;
+  color: #f04e9a;
+  font-size: clamp(20px, 5vw, 27px);
+  text-shadow: 1px 2px #ffc2df;
+}
+
+.level {
+  text-align: center;
+  padding: 7px 10px;
+  border-radius: 13px;
+  background: #ffe0ef;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.level span {
+  display: block;
+  color: #e74b96;
+  font-size: 19px;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 9px;
+}
+
+.info div {
+  text-align: center;
+  padding: 8px 3px;
+  background: #f5e8ff;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.info strong {
+  display: block;
+  margin-top: 3px;
+  color: #e44e9c;
+  font-size: 19px;
+}
+
+.stars {
+  text-align: center;
+  font-size: 25px;
+  letter-spacing: 5px;
+  margin: 4px 0 8px;
+  color: #cfc6d9;
+}
+
+.stars .on {
+  color: #ffba31;
+  text-shadow: 0 2px #f18d29;
+}
+
+.board {
+  width: 100%;
+  overflow: hidden;
+  border: 3px solid white;
+  border-radius: 17px;
+  background: #e9f7ff;
+  line-height: 0;
+}
+
+canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  touch-action: none;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 7px;
+  margin-top: 11px;
+}
+
+button {
+  border: none;
+  border-radius: 13px;
+  padding: 12px 3px;
+  background: #edceff;
+  color: #713c7e;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 900;
+  box-shadow: 0 4px #d0a7e8;
+  cursor: pointer;
+}
+
+button:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px #d0a7e8;
+}
+
+.primary {
+  background: #ff83ba;
+  color: white;
+  box-shadow: 0 4px #e55e9b;
+}
+
+button:disabled {
+  opacity: .45;
+  cursor: default;
+}
+
+#message {
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  min-height: 20px;
+  margin: 10px 0 3px;
+}
+
+.hint {
+  font-size: 11px;
+  text-align: center;
+  line-height: 1.5;
+  color: #9977a2;
+  margin: 5px 0;
+}
+</style>
+</head>
+
+<body>
+<main class="game">
+
+  <header>
+    <h1>🍬 CANDY CHAOS</h1>
+    <div class="level">
+      LEVEL
+      <span id="level">1</span>
+    </div>
+  </header>
+
+  <section class="info">
+    <div>SCORE<strong id="score">0</strong></div>
+    <div>TARGET<strong id="target">20</strong></div>
+    <div>SHOTS LEFT<strong id="shots">30</strong></div>
+  </section>
+
+  <div class="stars" id="stars">☆ ☆ ☆</div>
+
+  <div class="board">
+    <canvas id="gameCanvas" width="420" height="700"></canvas>
+  </div>
+
+  <div class="buttons">
+    <button id="restart">🔄 RESTART</button>
+    <button id="shoot" class="primary">🍭 SHOOT!</button>
+    <button id="pause">⏸ PAUSE</button>
+  </div>
+
+  <div id="message">Arahkan permen dan mulai bermain! 💗</div>
+
+  <p class="hint">
+    Cocokkan 3+ permen sewarna untuk meletuskannya.<br>
+    Selesaikan target untuk membuka level berikutnya! ⭐
+  </p>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
